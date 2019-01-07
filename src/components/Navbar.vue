@@ -1,15 +1,14 @@
 <template>
   <div id="nav">
-    <div class="logo">
-      <img src="@/assets/deezer.png" alt srcset>
-    </div>
-    <!-- <div>
+    <router-link to="/">
+      <div class="logo">
+        <img src="@/assets/deezer.png" alt srcset>
+      </div>
+    </router-link>
+    <div>
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
     </div>
-    <div>
-      <a href>login</a>
-    </div>-->
   </div>
 </template>
 
@@ -21,7 +20,8 @@ export default {};
   padding: 30px;
   background-color: rgb(43, 43, 43);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #nav a {
@@ -31,7 +31,6 @@ export default {};
 }
 
 #nav a.router-link-exact-active {
-  background-color: rgba(255, 255, 255, 0.377);
   color: #030303;
 }
 </style>

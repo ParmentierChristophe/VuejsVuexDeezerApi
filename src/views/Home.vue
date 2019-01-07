@@ -14,8 +14,15 @@
       <h2>Les Playlists du moment</h2>
 
       <div class="Cards">
-        <div v-for="playlist in playlists" v-bind:key="playlist.id">
-          <TopPlaylist :playlist="playlist"/>
+        <div v-for="topPlaylist in Topplaylists" v-bind:key="topPlaylist.id">
+          <TopPlaylist :topPlaylist="topPlaylist"/>
+        </div>
+      </div>
+
+      <div class="Cards">
+        <div v-for="playlist in this.$store.state.playlists" v-bind:key="playlist.id">
+          <OtherPlaylist :playlist="playlist"/>
+          <br>
         </div>
       </div>
     </div>
@@ -25,6 +32,7 @@
 <script>
 import TopAlbum from "@/components/TopAlbum";
 import TopPlaylist from "@/components/TopPlaylist";
+import OtherPlaylist from "@/components/OtherPlaylist";
 import Loader from "@/components/Loader";
 
 import { mapGetters } from "vuex";
@@ -34,13 +42,14 @@ export default {
   components: {
     TopAlbum,
     TopPlaylist,
+    OtherPlaylist,
     Loader
   },
   computed: {
     ...mapGetters({
       albums: "getTopAlbum",
       infos: "getInfos",
-      playlists: "getPlaylists"
+      Topplaylists: "getTopPlaylists"
     })
   },
 
@@ -63,7 +72,6 @@ h2 {
 .Cards {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 3em;
   width: 100%;
   justify-content: center;
   margin: 0 auto;

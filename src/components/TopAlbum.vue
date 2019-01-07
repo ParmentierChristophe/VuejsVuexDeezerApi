@@ -2,7 +2,8 @@
   <div class="hello">
     <div class="Card">
       <h2>{{album.title}}</h2>
-      <p>{{album.artist.name}}</p>
+      <p class="tag">{{album.artist.name}}</p>
+
       <img :src="album.cover_big">
     </div>
   </div>
@@ -65,5 +66,18 @@ export default {
   font-size: 18px;
   align-self: end;
   z-index: 4;
+}
+
+.tag {
+  position: absolute;
+  left: 2rem;
+  top: 16rem;
+  z-index: 3;
+  font-weight: normal;
+  font-size: 14px;
+  padding: 0.2rem 0.75rem;
+  color: #dbdbdb;
+  background-color: #030303;
+  border-radius: 9999px;
 }
 </style>

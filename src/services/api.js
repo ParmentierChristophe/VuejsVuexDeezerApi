@@ -29,6 +29,11 @@ export const fetchPersonalInfos = async () =>
     return res;
   });
 
+export const fetchPlaylistDetail = async id =>
+  await api.get(`playlist/${id}`).then(res => {
+    return res.data;
+  });
+
 export const fetchTrackPlaylist = async id =>
   await api.get(`playlist/${id}/tracks`).then(res => {
     return res.data;
