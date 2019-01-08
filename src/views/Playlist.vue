@@ -1,27 +1,47 @@
 <template>
   <div>
-    <div class="container_img">
-      <img :src="this.$store.state.playlistDetailTrack.playlistDetails.picture_xl" alt>
+    <div v-if="this.$store.state.Loading.loading" class="loader">
+      <Loader/>
     </div>
-    <h1>{{this.$store.state.playlistDetailTrack.title}}</h1>
-    <div
-      v-for="(item, index) in this.$store.state.playlistDetailTrack.tracks"
-      :key="index"
-    >{{item.title}}</div>
+    <div v-else>
+      <div class="container_img">
+        <img :src="Playlist.playlistDetails.picture_xl">
+      </div>
+      <h1>{{Playlist.title}}</h1>
+      <div
+        v-for="(track, index) in Playlist.tracks"
+        :key="index"
+      >{{track.title}} | {{track.artist.name}}</div>
+    </div>
   </div>
 </template>
 
 <script>
+import Loader from "@/components/Loader";
+
+import { mapGetters } from "vuex";
+
 export default {
   name: "Playlist",
   props: ["TopPlaylist"],
-
-  mounted() {
+  components: {
+    Loader
+  },
+  computed: {
+    ...mapGetters({
+      Playlist: "getPlaylistDetails"
+    })
+  },
+  created() {
     this.$store.dispatch("fetchPlaylistDetail", this.$route.params.id);
   }
 };
 </script>
 <style scoped>
+.loader {
+  text-align: center;
+  padding: 20px;
+}
 h1 {
   text-align: center;
 }

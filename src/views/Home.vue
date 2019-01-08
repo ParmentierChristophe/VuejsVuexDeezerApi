@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div v-if="this.$store.state.loading" class="loader">
+    <div v-if="this.$store.state.Loading.loading" class="loader">
       <Loader/>
     </div>
 
@@ -11,6 +11,7 @@
           <TopAlbum :album="album"/>
         </div>
       </div>
+
       <h2>Les Playlists du moment</h2>
 
       <div class="Cards">
@@ -20,7 +21,7 @@
       </div>
 
       <div class="Cards">
-        <div v-for="playlist in this.$store.state.playlists" v-bind:key="playlist.id">
+        <div v-for="playlist in this.$store.state.Playlist.playlists" v-bind:key="playlist.id">
           <OtherPlaylist :playlist="playlist"/>
           <br>
         </div>

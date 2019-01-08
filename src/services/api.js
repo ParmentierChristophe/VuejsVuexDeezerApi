@@ -14,27 +14,27 @@ const api = axios.create({
     credentials: 'same-origin'
   }
 });
+// *
+// ALBUM FETCH
+// *
 
-export const fetchTrendAlbum = async () =>
-  await api.get('chart/0/albums').then(res => {
+export const fetchTrendAlbum = () => api.get('chart/0/albums');
+
+// *
+// PLAYLISTS FETCH
+// *
+
+export const fetchTopPlaylist = () => api.get('chart/0/playlists');
+
+export const fetchPlaylistDetail = id => api.get(`playlist/${id}`);
+
+export const fetchTrackPlaylist = id =>
+  api.get(`playlist/${id}/tracks`).then(res => {
     return res.data;
   });
-export const fetchTopPlaylist = async () =>
-  await api.get('chart/0/playlists').then(res => {
-    return res.data;
-  });
 
-export const fetchPersonalInfos = async () =>
-  await api.get('/infos').then(res => {
-    return res;
-  });
+// *
+// INFOS FETCH
+// *
 
-export const fetchPlaylistDetail = async id =>
-  await api.get(`playlist/${id}`).then(res => {
-    return res.data;
-  });
-
-export const fetchTrackPlaylist = async id =>
-  await api.get(`playlist/${id}/tracks`).then(res => {
-    return res.data;
-  });
+export const fetchPersonalInfos = () => api.get('/infos');
