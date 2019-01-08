@@ -8,16 +8,16 @@
         <img :src="Playlist.playlistDetails.picture_xl">
       </div>
       <h1>{{Playlist.title}}</h1>
-      <div
-        v-for="(track, index) in Playlist.tracks"
-        :key="index"
-      >{{track.title}} | {{track.artist.name}}</div>
+      <div v-for="(track, index) in Playlist.tracks" :key="index">
+        <Tracks :track="track"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Loader from "@/components/Loader";
+import Tracks from "@/components/PlaylistComponents/PlaylistTracks";
 
 import { mapGetters } from "vuex";
 
@@ -25,7 +25,8 @@ export default {
   name: "Playlist",
   props: ["TopPlaylist"],
   components: {
-    Loader
+    Loader,
+    Tracks
   },
   computed: {
     ...mapGetters({

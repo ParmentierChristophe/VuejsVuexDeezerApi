@@ -1,10 +1,4 @@
-import {
-  fetchTrendAlbum,
-  fetchPersonalInfos,
-  fetchTopPlaylist,
-  fetchTrackPlaylist,
-  fetchPlaylistDetail
-} from '@/services/api';
+import { fetchPersonalInfos } from '@/services/api';
 
 const state = {
   infos: {}
@@ -17,7 +11,7 @@ const mutations = {
 };
 
 const actions = {
-  async fetchInfos({ commit }, infos) {
+  async fetchInfos({ commit }) {
     commit('LOADING', true);
 
     await fetchPersonalInfos().then(res => {
