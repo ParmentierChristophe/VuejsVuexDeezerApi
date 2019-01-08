@@ -20,6 +20,8 @@ const api = axios.create({
 
 export const fetchTrendAlbum = () => api.get('chart/0/albums');
 
+export const fetchAlbumDetail = id => api.get(`album/${id}`);
+
 // *
 // PLAYLISTS FETCH
 // *

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Playlist from './views/Playlist.vue';
+import Album from './views/Album.vue';
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/playlist/:id',
       name: 'playlist',
       component: Playlist
+    },
+    {
+      path: '/album/:id',
+      name: 'album',
+      component: Album
     }
   ]
 });

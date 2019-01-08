@@ -1,8 +1,5 @@
 <template>
   <div class="track_container">
-    <div class="track_image">
-      <img :src="track.album.cover">
-    </div>
     <div class="track_icon_play">
       <svg version="1.1" viewBox="0 0 314.068 314.068" class="stroke">
         <g>
@@ -40,10 +37,10 @@ export default {
   width: 80%;
   margin: 0.5em auto;
   display: flex;
-  align-items: center;
   border-radius: 5px;
   background-color: rgb(235, 235, 235);
   text-align: center;
+  align-items: center;
 }
 .track_container div {
   padding: 0.5em;
@@ -66,7 +63,7 @@ export default {
   width: 10%;
 }
 .track_icon_play svg {
-  width: 20%;
+  width: 25px;
 }
 
 .stroke:hover {

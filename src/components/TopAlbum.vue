@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
-    <div class="Card">
-      <h2>{{album.title}}</h2>
-      <p class="tag">{{album.artist.name}}</p>
+    <router-link :to="`/album/${album.id}`">
+      <div class="Card">
+        <h2>{{album.title}}</h2>
+        <p class="tag">{{album.artist.name}}</p>
 
-      <img :src="album.cover_big">
-    </div>
+        <img :src="album.cover_big">
+      </div>
+    </router-link>
   </div>
 </template>
 

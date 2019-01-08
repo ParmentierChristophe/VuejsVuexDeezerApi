@@ -5,10 +5,10 @@
     </div>
     <div v-else>
       <div class="container_img">
-        <img :src="Playlist.playlistDetails.picture_xl">
+        <img :src="Album.albumDetail.cover_xl">
       </div>
-      <h1>{{Playlist.title}}</h1>
-      <div v-for="(track, index) in Playlist.tracks" :key="index">
+      <h1>{{Album.title}}</h1>
+      <div v-for="(track, index) in Album.tracks" :key="index">
         <Tracks :track="track"/>
       </div>
     </div>
@@ -22,18 +22,18 @@ import Tracks from "@/components/SharedComponents/PlaylistTracks";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Playlist",
+  name: "Album",
   components: {
     Loader,
     Tracks
   },
   computed: {
     ...mapGetters({
-      Playlist: "getPlaylistDetails"
+      Album: "getAlbumDetails"
     })
   },
   created() {
-    this.$store.dispatch("fetchPlaylistDetail", this.$route.params.id);
+    this.$store.dispatch("fetchAlbumDetail", this.$route.params.id);
   }
 };
 </script>
