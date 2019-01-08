@@ -1,5 +1,9 @@
 <template>
   <div class="track_container">
+    <div>{{index+1}}</div>
+    <div v-if="ifPlaylistDetail" class="track_image">
+      <img :src="track.album.cover" alt>
+    </div>
     <div class="track_icon_play">
       <svg version="1.1" viewBox="0 0 314.068 314.068" class="stroke">
         <g>
@@ -21,13 +25,23 @@
     </div>
     <div class="track_title">{{track.title}}</div>
     <div class="track_artist">{{track.artist.name}}</div>
+    <div v-if="ifPlaylistDetail" class="album_title">| {{track.album.title}}</div>
     <div class="track_time">{{track.duration | trackTime}}</div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["track"]
+  props: ["track", "index"],
+  computed: {
+    ifPlaylistDetail() {
+      if (this.$store.state.Playlist.playlistDetailTrack.tracks) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 };
 </script>
 
@@ -64,6 +78,11 @@ export default {
 }
 .track_icon_play svg {
   width: 25px;
+}
+.album_title {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 12px;
 }
 
 .stroke:hover {

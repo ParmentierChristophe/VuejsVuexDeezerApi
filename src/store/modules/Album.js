@@ -25,11 +25,13 @@ const actions = {
 
   async fetchAlbumDetail({ commit }, id) {
     commit('LOADING', true);
+    commit('FETCH_PLAYLIST_SONG', {});
 
     await fetchAlbumDetail(id).then(res => {
       commit('FETCH_ALBUM_DETAIL', {
         tracks: res.data.tracks.data,
         title: res.data.title,
+        cover: res.data.cover_xl,
         albumDetail: res.data
       });
       commit('LOADING', false);

@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import TopAlbum from "@/components/TopAlbum";
-import TopPlaylist from "@/components/TopPlaylist";
-import OtherPlaylist from "@/components/OtherPlaylist";
-import Loader from "@/components/Loader";
+import TopAlbum from "@/components/Home/TopAlbum";
+import TopPlaylist from "@/components/Home/TopPlaylist";
+import OtherPlaylist from "@/components/Home/OtherPlaylist";
+import Loader from "@/components/SharedComponents/Loader";
 
 import { mapGetters } from "vuex";
 

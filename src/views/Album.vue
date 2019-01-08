@@ -5,19 +5,22 @@
     </div>
     <div v-else>
       <div class="container_img">
-        <img :src="Album.albumDetail.cover_xl">
+        <img :src="Album.cover">
       </div>
-      <h1>{{Album.title}}</h1>
+      <h1>{{Album.title}} | {{Album.albumDetail.duration | trackTime}}</h1>
+      <h3
+        class="release_date"
+      >release date : {{Album.albumDetail.release_date |moment("dddd, MMMM Do YYYY")}}</h3>
       <div v-for="(track, index) in Album.tracks" :key="index">
-        <Tracks :track="track"/>
+        <Tracks :track="track" :index="index"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Loader from "@/components/Loader";
-import Tracks from "@/components/SharedComponents/PlaylistTracks";
+import Loader from "@/components/SharedComponents/Loader";
+import Tracks from "@/components/SharedComponents/Track";
 
 import { mapGetters } from "vuex";
 
@@ -61,5 +64,8 @@ img {
     to(rgba(0, 0, 0, 0))
   );
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+.release_date {
+  text-align: center;
 }
 </style>

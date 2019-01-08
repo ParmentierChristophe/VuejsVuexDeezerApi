@@ -9,15 +9,15 @@
       </div>
       <h1>{{Playlist.title}}</h1>
       <div v-for="(track, index) in Playlist.tracks" :key="index">
-        <Tracks :track="track"/>
+        <Tracks :track="track" :index="index"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Loader from "@/components/Loader";
-import Tracks from "@/components/SharedComponents/PlaylistTracks";
+import Loader from "@/components/SharedComponents/Loader";
+import Tracks from "@/components/SharedComponents/Track";
 
 import { mapGetters } from "vuex";
 
